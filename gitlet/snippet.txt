@@ -1,0 +1,14 @@
+        //* trace the split point *//
+        Commit pointer =currentCommit;
+        while (pointer!=null) {
+            ancestorOfCurrent.add(pointer.getEncoding());
+            pointer = pointer.getParent();
+        }
+        pointer = theBranchCommit;
+        while (pointer!=null) {
+            if (ancestorOfCurrent.contains(pointer.getEncoding())) {
+                break;
+            }
+            pointer = pointer.getParent();
+        }
+        Commit splitPoint = pointer;
